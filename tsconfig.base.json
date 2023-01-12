@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "dist",
+    "paths": {
+      "@shared/*": ["shared/*"],
+      "@server/*": ["server/*"],
+      "@client/*": ["client/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
