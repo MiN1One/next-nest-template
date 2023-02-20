@@ -8,7 +8,7 @@
 
 This monorepo provides a solution for using Next.js with Nest.js and Fastify adapter, specifically for the case where there is a need to fetch data from the server during static generation. It provides a solution to this problem by integrating Next.js with Nest.js and Fastify adapter, allowing for successful static generation with server-side data fetching.
 
-By using this monorepo, you can build and run Next.js applications within a Nest.js server using Fastify adapter. This provides a flexible and scalable architecture for building complex web applications with the benefits of both Next.js and Nest.js frameworks.
+By using this monorepo, you can build and run Next.js applications within a single Nest.js server using Fastify adapter. This provides a flexible and scalable architecture for building complex web applications with the benefits of both Next.js and Nest.js frameworks.
 
 However, it is important to note that this monorepo is specific to the use case of using Next.js with Nest.js and Fastify adapter for static generation with server-side data fetching.
 
