@@ -6,7 +6,7 @@
 <a href="http://nestjs.com"  target="blank"><img  src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-This monorepo is for running and building **NextJs** within **NestJs** server with **fastify** adapter. It solves the problem of not being able to build nextjs code when using **static generation** and **fetching** data from the server in this case your nestjs server.
+This monorepo is for running and building **NextJs** within **NestJs** server with **fastify** adapter. It solves the problem of not being able to build nextjs code when using **static generation** and **fetching** data from the server.
 
 
 ## Scripts
