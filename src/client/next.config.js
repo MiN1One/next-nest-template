@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== 'build') {
 module.exports = {
   distDir: '../../dist/.next',
   reactStrictMode: true,
+  i18n: require('../../locales'),
   env: {
     SERVER_HOST: 
       process.env.NODE_ENV !== 'production' 

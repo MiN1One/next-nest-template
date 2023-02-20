@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   @Get('test')
   getData() {
-    return 'Hello World from server!';
+    return 'Hello from server!';
   }
 }

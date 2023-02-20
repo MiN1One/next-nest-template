@@ -1,6 +1,5 @@
 import { Controller, Get, Req, Res } from "@nestjs/common";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { parse } from "url";
 import { ViewService } from "./view.service";
 
 @Controller()
@@ -9,18 +8,19 @@ export class ViewController {
     readonly viewService: ViewService,
   ) {}
 
-  @Get('*')
+  @Get(['*', '/_next/']) 
+  serveNextAssets(
+    @Res() res: FastifyReply,
+    @Req() req: FastifyRequest,
+  ) {
+    return this.viewService.nextHandler(req.raw, res.raw);
+  }
+
+  @Get('/:locale/')
   renderView(
-    @Req() req: FastifyRequest, 
+    @Req() req: FastifyRequest,
     @Res() res: FastifyReply,
   ) {
-    const parsedUrl = parse(req.url, true);
-    return this.viewService.nextServer.render(
-      req.raw, 
-      res.raw, 
-      parsedUrl.pathname, 
-      parsedUrl.query, 
-      parsedUrl
-    );
+    return this.viewService.renderPage(req, res);
   }
 }

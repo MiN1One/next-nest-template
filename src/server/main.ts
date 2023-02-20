@@ -1,11 +1,12 @@
+import './interfaces/declarations.interface';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import appConfig from './app.config';
 import { ConfigType } from '@nestjs/config';
-import { Logger } from '@nestjs/common';
-import { ViewModule } from './modules/view.module';
-import { ViewService } from './modules/view.service';
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { ViewModule } from './modules/view/view.module';
+import { ViewService } from './modules/view/view.service';
 import NextServer from 'next';
 import { NextServer as NextServerType } from 'next/dist/server/next';
 import { exec } from 'child_process';
@@ -35,10 +36,14 @@ async function bootstrap() {
       dir: 'src/client',
     });
 
-    app.select(ViewModule).get(ViewService).setNextServer(
+    const viewService = app.select(ViewModule).get(ViewService);
+
+    await viewService.setNextServer(
       nextServer, 
       !module?.hot?.data?.nextServer
     );
+
+    viewService.setNextHandler();
   }
 
   await app.listen(port, '::');
@@ -67,4 +72,4 @@ async function bootstrap() {
   }
 }
 
-bootstrap();
+bootstrap().catch(er => Logger.error(er, 'Bootstrap'));
